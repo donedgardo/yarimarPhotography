@@ -1,0 +1,7 @@
+<ul>
+  <h2>Clients:</h2>
+  <li ng-repeat="user in homeCtrl.users">
+  <div><a ng-href="admin/client/{{user._id}}">{{ user | displayName }}</a></div>
+  </li>
+</ul>
+
