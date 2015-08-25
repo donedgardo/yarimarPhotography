@@ -1,7 +1,33 @@
 <ul>
-  <h2>Clients:</h2>
-  <li ng-repeat="user in homeCtrl.users">
-  <div><a ng-href="admin/client/{{user._id}}">{{ user | displayName }}</a></div>
-  </li>
+  <div ng-hide="$root.currentUser" class="col-sm-4 col-sm-offset-4">
+    Restricted Access:
+    <form>
+      <input ng-model="homeCtrl.userLogin.user" type='text' placeholder="Email or username" class='form-control'>
+      <input ng-model="homeCtrl.userLogin.password" type="password" placeholder="Password" class='form-control'>
+      <button class='btn btn-primary btn-lg' ng-click='homeCtrl.login()'>Login</button>
+    </form>
+  </div>
+
+  <div ng-show="$root.currentUser">
+    <div class='row'>
+      <div>Welcome, {{$root.currentUser | displayName }}!</div>
+      <button ng-click="homeCtrl.logout()">Logout</button>
+    </div>
+  </div>
+
+  <div ng-show="$root.currentUser && $root.currentUser.admin">
+    <h2>Clients:</h2>
+    <div class='row'>
+      <div class='col-sm-3'>
+        <li ng-repeat="user in homeCtrl.users">
+        <div><a ng-href="admin/client/{{user._id}}">{{ user | displayName }}</a></div>
+        </li>
+      </div>
+      <div class='col-sm-3'>
+        <a href='/admin/create-client'>Create Client <i class='glyphicon glyphicon-plus-sign'></i></a>
+      </div>
+    </div>
+
+  </div>
 </ul>
 

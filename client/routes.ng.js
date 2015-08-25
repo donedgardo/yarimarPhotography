@@ -2,22 +2,18 @@ angular.module("yarimarPhotography")
 .config(
   function($urlRouterProvider, $stateProvider, $locationProvider){
 
+
     $locationProvider.html5Mode(true);
 
     $stateProvider
+    
     .state('admin', {
       url:'/admin',
       templateUrl:"client/admin/views/home.ng.html",
       controller:"AdminHomeCtrl",
       controllerAs:"homeCtrl"
-
-      //resolve: {
-      //  "currentUser":["$meteor", function($meteor){
-      //      return $meteor.this_user_is_admin();
-      //      }]
-      //}
-
     })
+
     .state('createUser', {
       url:'/admin/create-client',
       templateUrl:"client/admin/views/create-client.ng.html",
@@ -36,3 +32,4 @@ angular.module("yarimarPhotography")
     $urlRouterProvider.otherwise('/admin');
   });    
 
+  

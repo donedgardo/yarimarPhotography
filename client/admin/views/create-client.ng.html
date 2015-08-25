@@ -24,7 +24,11 @@
         <label>Full Name</label>
         <input ng-model="createClientCtrl.newUser.fullName" type='text' class='form-control' id='name'>
       </div>
-      <button type="button" class="btn btn-primary btn-lg" ng-click="createClientCtrl.createUser()">Create User</button>
+      <div class='form-group'>
+        <label>Telephone</label>
+        <input ng-model="createClientCtrl.newUser.tel" type='tel' class='form-control' id='tel'>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg"  ng-click="createClientCtrl.createUser()">Create User</button>
     </form>
   </div>
 </div>

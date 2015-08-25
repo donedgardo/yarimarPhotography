@@ -3,18 +3,24 @@
 <form class="form col-sm-4 col-sm-offset-1">
   <div class="form-group">
     <label>Username</label>
-    <input ng-model="clientDetCtrl.user.username" type="text" class="form-control">
+    <input ng-model="clientDetCtrl.user.username" ng-disable="!$rootScope.currentUser.admin" type="text" class="form-control">
   </div>
   <div class="form-group">
     <label>Emails</label>
-    <input ng-model="clientDetCtrl.user.emails[0].address"  type="email" class="form-control">
-    <input ng-model="clientDetCtrl.user.emails[1].address"  type="email" class="form-control">
-    <input ng-model="clientDetCtrl.user.emails[2].address"  type="email" class="form-control">
+    <input ng-model="clientDetCtrl.user.emails[0].address" ng-disable="!$rootScope.currentUser.admin" type="email" class="form-control">
+    <input ng-model="clientDetCtrl.user.emails[1].address" ng-disable="!$rootScope.currentUser.admin" type="email" class="form-control">
+    <input ng-model="clientDetCtrl.user.emails[2].address" ng-disable="!$rootScope.currentUser.admin" type="email" class="form-control">
   </div>
-  <div class="form-group" ng-show="$root.currentUser.admin">
+  <div class="form-group">
     <label>Client Notes</label>
-    <input ng-model="clientDetCtrl.user.note"  type="text" class="form-control" >
+    <input ng-model="clientDetCtrl.user.note" ng-disable="!$rootScope.currentUser.admin" type="text" class="form-control" >
   </div>
-  <button ng-click="clientDetCtrl.resetPassword()" class='btn btn-primary'>Reset Password</button>
+  <div class="form-group">
+    <label>Full Name</label>
+    <input ng-model="clientDetCtrl.user.profile.name" ng-disable="!$rootScope.currentUser.admin" type="text" class="form-control" >
+  </div>
+  <button class='btn btn-primary'>Save</button>
+  <button ng-click="clientDetCtrl.resetPassword()" class='btn btn-primary' ng-disable="!$rootScope.currentUser.admin">Reset Password</button>
+  <button class='btn btn-danger' ng-disable="!$rootScope.currentUser.admin" ng-click="clientDetCtrl.remove()">Remove Client</button>
 </form>
 
