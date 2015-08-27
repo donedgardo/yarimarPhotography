@@ -1,0 +1,9 @@
+<div ng-hide="$root.currentUser" class="col-sm-4 col-sm-offset-4">
+  <h2>Log in</h2>  
+  <form>
+    <input ng-model="lc.userLogin.user" type='text' placeholder="Email or username" class='form-control'>
+    <input ng-model="lc.userLogin.password" type="password" placeholder="Password" class='form-control'>
+    <button class='btn btn-primary btn-lg' ng-click='lc.login()'>Login</button>
+  </form>
+</div>
+

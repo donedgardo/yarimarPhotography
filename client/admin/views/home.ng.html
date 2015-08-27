@@ -8,13 +8,6 @@
     </form>
   </div>
 
-  <div ng-show="$root.currentUser">
-    <div class='row'>
-      <div>Welcome, {{$root.currentUser | displayName }}!</div>
-      <button ng-click="homeCtrl.logout()">Logout</button>
-    </div>
-  </div>
-
   <div ng-show="$root.currentUser && $root.currentUser.admin">
     <h2>Clients:</h2>
     <div class='row'>

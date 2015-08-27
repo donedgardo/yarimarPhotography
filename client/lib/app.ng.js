@@ -1,4 +1,5 @@
 angular.module("yarimarPhotography",[
   'angular-meteor',
-  'ui.router'
+  'ui.router',
+  'ngFileUpload'
 ]);

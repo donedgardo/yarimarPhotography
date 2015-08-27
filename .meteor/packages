@@ -11,3 +11,7 @@ twbs:bootstrap
 less
 accounts-password
 email
+sanjo:jasmine
+velocity:html-reporter
+cfs:standard-packages
+danialfarid:ng-file-upload
