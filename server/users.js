@@ -26,7 +26,7 @@ Meteor.methods({
 Meteor.users.allow({
     update: function(userIdToUpdate, doc, fields, modifier){
       var user = findUser(userIdToUpdate);
-      console.log(user.username, user.admin);
+      if(user)
         return (user.admin);
       }
 });

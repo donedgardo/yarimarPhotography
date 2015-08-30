@@ -6,20 +6,18 @@ angular.module("yarimarPhotography")
     $locationProvider.html5Mode(true);
 
     $stateProvider
-    .state('login',{
-      url: "/login",
-      templateUrl: "client/sessions/views/login.ng.html",
-      controller:"LoginCtrl",
-      controllerAs:"lc"
+    .state('home',{
+      url:'/',
+      template:"<h2>Home</h2>"
     })
-
 
     .state('logout', {
       url: '/logout',
       resolve: {
         "logout": function($meteor, $state) {
           return $meteor.logout().then(function(){
-            $state.go('/');
+            $state.go('home')
+            console.log('Succesful logout');
           }, function(err){
             console.log('logout error - ', err);
           });
@@ -69,18 +67,18 @@ angular.module("yarimarPhotography")
       // or the custom error, and redirect the user back to the login page
       switch(error) {
         case "UNAUTHORIZED":
-          $state.go('login');
+          $state.go('home');
         break;
       }
     });
   }); 
 
-  var onlyAdmin = { "adminUser":  function($meteor){
+  var onlyAdmin = {"adminUser":  function($meteor){
     return $meteor.requireValidUser(function(user) {
       if (user.username === "donedgardo" || user.username === "yarimarj")
         return true;
       else
-        return 'UNAUTHORIZED';
+        return "UNAUTHORIZED";
     });
   }};
 

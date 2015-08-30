@@ -2,32 +2,25 @@
   <meta name='viewport' content="width=device-width, initial-scale=1">
   <base href="/">
 </head>
-<body ng-app="yarimarPhotography">  
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hamburger" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<body layout="column" ng-app="yarimarPhotography" ng-controller="HomeCtrl as hc">  
+  <md-toolbar md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+    <div>
       <a class="navbar-brand" href="/">
         <img id='brandImg' alt='brand' src="YJ.png">
       </a>
     </div>
-    <h3>Yarimar Jimenez Photography</h3>
-
-    <div id="hamburger" class="navbar-collapase">
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="$root.currentUser"><a ng-href="/login" >Login</a></li>
-        <li ng-show="$root.currentUser">Welcome, {{currentUser.profile.name}}</li>
-        <li ng-show="$root.currentUser"><a ng-href="/logout">Logout</a></li>
-      </ul>
+    <div>
+      <h3><span>Yarimar Jimenez Photography</span></h3>
     </div>
-  </div>
-</nav> 
+    <span flex=""></span>
+    <div class="navbar-right navbar-text" layout="column">
+      <md-button ng-hide="$root.currentUser" ng-click="hc.login($event)">Login</md-button>
+      <md-button ng-show="$root.currentUser">
+          Welcome, {{$rootScope.currentUser.profile.name}}
+      </md-button>
+      <md-button ng-show="$root.currentUser" ng-href="/logout">Logout</md-button>
+    </div>
+  </md-toolbar>
 
-<div ui-view class="contaier-fluid"></div>
+  <div ui-view class="contaier-fluid"></div>
 </body>

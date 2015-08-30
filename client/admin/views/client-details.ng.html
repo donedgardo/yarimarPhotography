@@ -1,26 +1,51 @@
-
-<form class="form col-sm-4 col-sm-offset-1">
-  <h2>Edit Client:</h2>
-  <div class="form-group">
-    <label>Username</label>
-    <input ng-model="clientDetCtrl.user.username" ng-disable="!$rootScope.currentUser.admin" type="text" class="form-control">
+<div layout="row">
+  <span flex></span>
+  <div layout="column" layout-margin>
+    <h2>Edit Client:</h2>
+    <md-content layout-padding clss="autoScroll">
+      <md-input-container class="md-icon-float">
+        <label>Username</label>
+        <md-icon md-svg-icon="action:ic_perm_identity_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.username" ng-disable="!$rootScope.currentUser.admin" type="text">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label>Emails</label>
+        <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.emails[0].address" ng-disable="!$rootScope.currentUser.admin" type="email">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label>Emails</label>
+        <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.emails[1].address" ng-disable="!$rootScope.currentUser.admin" type="email">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label>Emails</label>
+        <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.emails[2].address" ng-disable="!$rootScope.currentUser.admin" type="email">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label>Client Notes</label>
+        <md-icon md-svg-icon="communication:ic_comment_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.note" ng-disable="!$rootScope.currentUser.admin" type="text">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label>Full Name</label>
+        <md-icon md-svg-icon="social:ic_person_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.profile.name" ng-disable="!$rootScope.currentUser.admin" type="text">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label>Telephone</label>
+        <md-icon md-svg-icon="maps:ic_local_phone_24px"></md-icon>
+        <input ng-model="clientDetCtrl.user.tel" type='tel' id='tel' ng-disable="!$rootScope.currentUser.admin">
+      </md-input-container>
+      <div layout="row">
+        <md-button>Save</md-button>
+        <span flex></span>
+        <md-button ng-click="clientDetCtrl.resetPassword()" ng-disable="!$rootScope.currentUser.admin">Reset Password</md-button>
+        <span flex></span>
+        <md-button ng-disable="!$rootScope.currentUser.admin" ng-click="clientDetCtrl.remove()">Remove Client</md-button>
+      </div>
+    </md-content>
   </div>
-  <div class="form-group">
-    <label>Emails</label>
-    <input ng-model="clientDetCtrl.user.emails[0].address" ng-disable="!$rootScope.currentUser.admin" type="email" class="form-control">
-    <input ng-model="clientDetCtrl.user.emails[1].address" ng-disable="!$rootScope.currentUser.admin" type="email" class="form-control">
-    <input ng-model="clientDetCtrl.user.emails[2].address" ng-disable="!$rootScope.currentUser.admin" type="email" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Client Notes</label>
-    <input ng-model="clientDetCtrl.user.note" ng-disable="!$rootScope.currentUser.admin" type="text" class="form-control" >
-  </div>
-  <div class="form-group">
-    <label>Full Name</label>
-    <input ng-model="clientDetCtrl.user.profile.name" ng-disable="!$rootScope.currentUser.admin" type="text" class="form-control" >
-  </div>
-  <button class='btn btn-primary'>Save</button>
-  <button ng-click="clientDetCtrl.resetPassword()" class='btn btn-primary' ng-disable="!$rootScope.currentUser.admin">Reset Password</button>
-  <button class='btn btn-danger' ng-disable="!$rootScope.currentUser.admin" ng-click="clientDetCtrl.remove()">Remove Client</button>
-</form>
-
+  <span flex></span>
+</div>

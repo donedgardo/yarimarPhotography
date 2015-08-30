@@ -7,7 +7,6 @@
 meteor-platform
 urigo:angular
 angularui:angular-ui-router
-twbs:bootstrap
 less
 accounts-password
 email
@@ -15,3 +14,6 @@ sanjo:jasmine
 velocity:html-reporter
 cfs:standard-packages
 danialfarid:ng-file-upload
+cfs:gridfs
+angular:angular-material
+planettraining:material-design-icons

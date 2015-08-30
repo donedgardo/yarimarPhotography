@@ -1,9 +1,24 @@
-<div ng-hide="$root.currentUser" class="col-sm-4 col-sm-offset-4">
-  <h2>Log in</h2>  
-  <form>
-    <input ng-model="lc.userLogin.user" type='text' placeholder="Email or username" class='form-control'>
-    <input ng-model="lc.userLogin.password" type="password" placeholder="Password" class='form-control'>
-    <button class='btn btn-primary btn-lg' ng-click='lc.login()'>Login</button>
-  </form>
-</div>
-
+<md-dialog aria-label="Log in">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Login</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="lc.close()" aria-label="Close">
+        <md-icon md-svg-icon="navigation:ic_close_24px"></md-icon> 
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-dialog-login">
+    <div ng-hide="$root.currentUser" layout="column" >
+      <form>
+        <md-input-container>
+          <input ng-model="lc.userLogin.user" type='text' placeholder="Email or username">
+        </md-input-container>
+        <md-input-container>
+          <input ng-model="lc.userLogin.password" type="password" placeholder="Password">
+        </md-input-container>
+        <md-button class='btn btn-primary btn-lg' ng-click='lc.login()'>Login</md-button>
+      </form>
+    </div>
+  </md-dialog-content>
+</md-dialog>
