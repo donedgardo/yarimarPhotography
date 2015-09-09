@@ -1,14 +1,54 @@
-<md-dialog class="create-album-dialog">
-    <form>
-        <md-toolbar>
-            <h2> Create Albums</h2>
-        </md-toolbar>
-        <label>Select client</label>
-        <select class="form-control" ng-model="ca.newAlbum.owner">
-            <option ng-repeat="user in ca.users">{{user.profile.name}}</option>
-        </select>
-        <label>Album name:</label>
-        <input ng-model="ca.newAlbum.name" placeholder="Album title" class="form-control">
+<md-dialog aria-label="Create Album">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Create Album</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="ca.close()" aria-label="Close">
+        <md-icon md-svg-icon="content:ic_clear_24px"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout-margin>
+    <h2 flex>Create Album:</h2>
+    <div>
+      <form>
+        <md-input-container>
+          <md-select ng-model="ca.newAlbum.owner" placeholder="Select album owner">
+            <md-option ng-repeat="user in ca.users">{{user.profile.username}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container>
+          <label>Album name:</label>
+          <input ng-model="ca.newAlbum.name">
+        </md-input-container>
+      </form>
+      <div ng-hide="ca.imgSrc" ngf-drop ngf-select
+        ngf-change="ca.addImages($files)"
+        ngf-drag-over-class="{accept:'dragover', reject:'dragover-err',
+        delay:100}" class="drop-box"
+        ngf-multiple="true" ngf-allow-dir="true" ngf-accept="'image/*'"
+        ngf-drop-available="dropAvailable">
+        <div>Click here to select images</div>
+        <div>
+          <strong>OR</strong>
+        </div>
+        <div ng-show="dropAvailable">You can drop images here</div>
+      </div>
+    </div>
 
-    </form>
+    <div ng-repeat="img in ca.preview">
+      <img ngf-src="img">
+    </div>
+
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="ca.createAlbum(ca.newAlbum)" class="md-primary" >
+      Done
+    </md-button>
+    <md-button ng-click="ca.close()" class="md-warn">
+      Cancel
+    </md-button>
+    <span flex></span>
+  </div>
 </md-dialog>

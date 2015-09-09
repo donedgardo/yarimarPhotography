@@ -1,21 +1,6 @@
 <div layout="row">
   <span flex></span>
   <div layout="column" flex>
-    <div ng-hide="$root.currentUser">
-      Restricted Access:
-      <form>
-        <md-input-container>
-          <label>Username or email</label>
-          <input ng-model="homeCtrl.userLogin.user" type='text'>
-        </md-input-container>
-        <md-input-container>
-          <label>Password</label>
-          <input ng-model="homeCtrl.userLogin.password" type="password">
-        </md-input-container>
-        <md-button ng-click='homeCtrl.login()'>Login</md-button>
-      </form>
-    </div>
-
     <div ng-show="$root.currentUser && $root.currentUser.admin">
       <h2>Clients:</h2>
       <md-list ng-repeat="user in homeCtrl.users" layout="row">
@@ -26,4 +11,7 @@
     </div>
   </div>
   <span flex></span>
+  <div layout="column" flex>
+    <md-button ng-click="homeCtrl.openAlbumDialog($event)">Create Album</md-button>
+  </div>
 </div>

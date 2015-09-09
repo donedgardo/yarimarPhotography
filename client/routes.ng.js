@@ -57,9 +57,17 @@ angular.module("yarimarPhotography")
       resolve: onlyAdmin
     })
 
+    .state('editAlbum', {
+      url: '/admin/album/:albumId',
+      templateUrl: "client/albums/views/edit-album.ng.html",
+      controller: 'EditAlbumCtrl',
+      controllerAs:'ea',
+      resolve: onlyAdmin
+    })
+
     $urlRouterProvider.otherwise('/admin');
 
-  })    
+  })
 
   .run(function($rootScope, $state) {
     $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
@@ -71,7 +79,7 @@ angular.module("yarimarPhotography")
         break;
       }
     });
-  }); 
+  });
 
   var onlyAdmin = {"adminUser":  function($meteor){
     return $meteor.requireValidUser(function(user) {

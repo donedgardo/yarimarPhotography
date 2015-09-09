@@ -1,31 +1,15 @@
-Albums = new FS.Collection("albums", {
-  stores:[
-    new FS.Store.GridFS("original")
-  ],
-  filter: {
-    allow: {
-      contentTypes:['album/*']
-    }
+Albums = new Mongo.Collection('albums');
+
+Albums.allow({
+  insert: function (userId, album){
+    return userId;
+  },
+  update: function (userId, album, fields, modifier){
+    return userId;
+  },
+  remove: function (userId, album){
+    return userId;
   }
 });
 
-if (Meteor.isServer){
-  Albums.allow({
-    insert: function(userId) {
-      return(userId ? true:false);
-    },
-    remove: function(userId){
-      return (userId ? true:false);
-    },
-    download: function(){
-      return true;
-    },
-    update: function(userId){
-      return(userId? true:false);
-    }
-  });
 
-  Meteor.publish('albums', function(){
-    return Albums.find({});
-  });
-}

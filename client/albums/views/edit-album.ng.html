@@ -1,0 +1,37 @@
+<div layout="row">
+  <span flex></span>
+  <div layout="column" layout-margin>
+    <h2>Edit Album:</h2>
+    <md-content layout-padding class="autoScroll">
+      <md-input-container>
+        <label><h3>Album Name:</h3></label>
+        <input ng-model="ea.album.name">
+      </md-input-container>
+      <md-input-container>
+        <md-select ng-model="ea.album.owner"
+          placeholder="{{ea.album.owner}}">
+          <md-option ng-repeat="user in ea.users">{{user.profile.name}}</md-option>
+        </md-select>
+      </md-input-container>
+      <div ng-repeat = "img in ea.album.images">
+        <div layout="row">
+          <md-input-container flex>
+            <label>Name:</label>
+            <input ng-model="img.name" aria-label="Image name">
+          </md-input-container>
+          <span flex></span>
+          <md-input-container flex>
+            <label>Rating</label>
+            <input ng-model="img.rating" aria-label="Rating">
+          </md-input-container>
+        </div>
+        <img ng-src="{{ ea.getImage(img)}}" class='thumb'>
+      </div>
+    </md-content>
+    <md-button class="md-raised md-warn" ng-click="ea.remove()">
+      Remove Album
+    </md-button>
+    <md-button ng-click="">Save</md-button>
+  </div>
+  <span flex></span>
+</div>

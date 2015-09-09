@@ -4,6 +4,7 @@
 </head>
 <body layout="column" ng-app="yarimarPhotography" ng-controller="HomeCtrl as hc">  
   <md-toolbar md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+    <!-- Logo/Brand -->
     <div>
       <a class="navbar-brand" href="/">
         <img id='brandImg' alt='brand' src="YJ.png">
@@ -13,14 +14,29 @@
       <h3><span>Yarimar Jimenez Photography</span></h3>
     </div>
     <span flex=""></span>
-    <div class="navbar-right navbar-text" layout="column">
-      <md-button ng-hide="$root.currentUser" ng-click="hc.login($event)">Login</md-button>
-      <md-button ng-show="$root.currentUser">
-          Welcome, {{$rootScope.currentUser.profile.name}}
-      </md-button>
-      <md-button ng-show="$root.currentUser" ng-href="/logout">Logout</md-button>
-    </div>
+
+    <md-button ng-hide="$root.currentUser" ng-click="hc.login($event)">Login</md-button>
+
+    <!-- User Interactive Menu -->
+      <md-menu ng-show="$root.currentUser"  md-offset="0 90">
+        <md-button aria-label="Open User Interactive Menu"
+          ng-click="hc.openUserMenu($mdOpenMenu, $event)">
+          <small>Welcome {{ currentUser.username }}</small>
+        </md-button>
+        <md-menu-content width='4'>
+          <md-menu-item>
+            Welcome, {{ curentUser.username }}
+          </md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <md-menu-item>
+            <md-button ng-show="$root.currentUser" ng-href="/logout">Logout</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+    <!-- End tooldbar -->
   </md-toolbar>
 
+  <!-- Main Contnent -->
   <div ui-view class="contaier-fluid"></div>
 </body>

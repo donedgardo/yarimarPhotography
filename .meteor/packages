@@ -15,5 +15,5 @@ velocity:html-reporter
 cfs:standard-packages
 danialfarid:ng-file-upload
 cfs:gridfs
-angular:angular-material
 planettraining:material-design-icons
+angular:angular-material@=0.10.0
