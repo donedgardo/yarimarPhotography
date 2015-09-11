@@ -8,8 +8,7 @@
 function AdminHomeController($rootScope, $meteor, $location, $scope, $mdDialog, $mdMenu){
   var self = this;
 
-  self.users= $meteor.collection(Meteor.users, false).subscribe('users');
-
+  self.users= $meteor.collection(Meteor.users, false);
   self.openAlbumDialog = openAlbumDialog;
 
   function openAlbumDialog(ev){
@@ -26,5 +25,13 @@ function AdminHomeController($rootScope, $meteor, $location, $scope, $mdDialog, 
       console.log('Error creating album');
     })
   }
+
+  $meteor.autorun($scope, function() {
+    $meteor.subscribe('users', $scope.getReactively('userSearchString'));
+    console.log(self.users)
+  });
+
+
+
 }
 })(angular);

@@ -1,8 +1,11 @@
-Meteor.publish("users", function(){
+Meteor.publish("users", function(searchString){
+  if (searchString == null)
+    searchString = '';
   var loggedInUser = Meteor.users.findOne({_id: this.userId});
   if (loggedInUser && loggedInUser.admin){
-    return Meteor.users.find({}, {fields: {emails: 1, username: 1, profile: 1, note: 1, admin: 1}});
-    console.log("admin user.subscribe");
+    return Meteor.users.find({
+      'profile.name' : { '$regex' : '.*' + searchString || '' + '.*', '$options' : 'i' }
+    }, {fields: {emails: 1, username: 1, profile: 1, note: 1, admin: 1}});
   }
   else{
     return Meteor.users.find({}, {fields:{emails:1, username:1, profile:1, admin:1}});

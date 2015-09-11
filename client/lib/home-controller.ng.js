@@ -16,7 +16,6 @@ function HomeController($rootScope, $mdDialog, $meteor, $location){
     $mdDialog.show({
       controller: 'LoginCtrl as lc',
       templateUrl: 'client/sessions/views/login.ng.html',
-      parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true
     })

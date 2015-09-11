@@ -1,17 +1,37 @@
-<div layout="row">
-  <span flex></span>
-  <div layout="column" flex>
+<div>
+  <div layout="column" layout-padding layout-margin class="home-whiteframe">
     <div ng-show="$root.currentUser && $root.currentUser.admin">
-      <h2>Clients:</h2>
-      <md-list ng-repeat="user in homeCtrl.users" layout="row">
-        <a ng-href="admin/client/{{user._id}}">{{ user | displayName }}</a>
-      </md-list>
-      <md-button layout="row" href='/admin/create-client'>
-        <md-icon md-svg-icon="social:ic_person_add_24px"></md-icon> Add Client</md-button>
+      <div layout="row" layout-sm="column" layout-margin>
+
+        <!-- AutoComplete search client -->
+        <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100"
+          layout layout-align="center center">
+          <md-input-container>
+            <input ng-model="userSearchString" placeholder="Search
+            user...">
+            <div ng-repeat="user in self.users">
+              <span ng-show="user">{{user.profile.name}}</span>
+            </div>
+          </md-input-container>
+        </md-whiteframe-z1>
+        <!-- End AutoComplete search client -->
+
+        <!--AutoComplete search album -->
+        <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100"
+          layout layout-align="center center">
+          Search Album
+        </md-whiteframe-z1>
+      </div>
+      <div layout="row" layout-sm="column" layout-margin>
+        <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100" 
+                                       layout layout-align="center center">
+          Create Client
+        </md-whiteframe-z1>
+        <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100"
+                                       layout layout-align="center center">
+          Create Album
+        </md-whiteframe-z1>
+      </div>
     </div>
-  </div>
-  <span flex></span>
-  <div layout="column" flex>
-    <md-button ng-click="homeCtrl.openAlbumDialog($event)">Create Album</md-button>
   </div>
 </div>

@@ -3,40 +3,63 @@
   <base href="/">
 </head>
 <body layout="column" ng-app="yarimarPhotography" ng-controller="HomeCtrl as hc">  
-  <md-toolbar md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+  <md-toolbar md-scroll-shrink layout="row" layout-align="start center"
+    layout-padding class="toolbar-main-header">
     <!-- Logo/Brand -->
     <div>
       <a class="navbar-brand" href="/">
         <img id='brandImg' alt='brand' src="YJ.png">
       </a>
     </div>
-    <div>
-      <h3><span>Yarimar Jimenez Photography</span></h3>
+    <div hide-sm>
+      <h3>Yarimar Jimenez Photography</h3>
     </div>
     <span flex=""></span>
 
     <md-button ng-hide="$root.currentUser" ng-click="hc.login($event)">Login</md-button>
 
     <!-- User Interactive Menu -->
-      <md-menu ng-show="$root.currentUser"  md-offset="0 90">
-        <md-button aria-label="Open User Interactive Menu"
-          ng-click="hc.openUserMenu($mdOpenMenu, $event)">
-          <small>Welcome {{ currentUser.username }}</small>
-        </md-button>
-        <md-menu-content width='4'>
-          <md-menu-item>
-            Welcome, {{ curentUser.username }}
-          </md-menu-item>
-          <md-menu-divider></md-menu-divider>
-          <md-menu-item>
-            <md-button ng-show="$root.currentUser" ng-href="/logout">Logout</md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
-
-    <!-- End tooldbar -->
+    <md-menu  md-offset="0 90">
+      <md-button aria-label="Open User Interactive Menu"
+        ng-click="$mdOpenMenu($event)">
+        <small>Welcome {{ currentUser.username }}</small>
+      </md-button>
+      <md-menu-content width='4'>
+        <md-menu-item>
+          Welcome, {{ curentUser.username }}
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button ng-show="$root.currentUser" ng-href="/logout">Logout</md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+    <!--End User Interactive Menu -->
   </md-toolbar>
+  <!-- End tooldbar -->
 
-  <!-- Main Contnent -->
-  <div ui-view class="contaier-fluid"></div>
+  <section layout="row" flex>
+    <!-- Side Navigation -->
+    <md-sidenav class="md-sidnav-left md-whiteframe-z2" md-component-id="left"
+      md-is-locked-open="$mdMedia('gt-md')">
+      <md-content>
+        <md-button ng-click="hc.closeSideNav()" class="md-primary" hide-gt-md>
+          Cose Side Nav
+        </md-button>
+        <div hide-md show-gt-md layout="column">
+          <md-button>Home</md-button>
+          <md-button>Clients</md-button>
+          <md-button>Albums</md-button>
+        </div>
+      </md-content>
+    </md-sidenav>
+    <!-- End Side Navigation -->
+
+    <!-- Main Contnent -->
+    <md-content flex layout-padding>
+      
+      <div layout="column" layout-fill layout-align="top center" ui-view ></div>
+    </md-content>
+  </section>
+
 </body>
