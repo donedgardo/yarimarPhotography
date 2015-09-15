@@ -13,6 +13,7 @@ function EditAlbumController($meteor, $stateParams, $scope, $filter, $rootScope,
   self.album  = $meteor.object(Albums, $stateParams.albumId, true);
   self.getImage = getImage;
   self.remove = remove;
+  self.album.date= new Date();
 
   function getImage(image){
     if(image && image._id) {

@@ -8,11 +8,16 @@
         <input ng-model="ea.album.name">
       </md-input-container>
       <md-input-container>
+        <h3>Album owner:</h3>
         <md-select ng-model="ea.album.owner"
           placeholder="{{ea.album.owner}}">
           <md-option ng-repeat="user in ea.users">{{user.profile.name}}</md-option>
         </md-select>
       </md-input-container>
+      <div>
+        <h3>Album date:</h3>
+        <md-datepicker ng-model="ea.album.date" md-placeholder="Enter date"></md-datepicker>
+      </div>
       <div ng-repeat = "img in ea.album.images">
         <div layout="row">
           <md-input-container flex>

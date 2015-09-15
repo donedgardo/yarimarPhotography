@@ -16,4 +16,5 @@ cfs:standard-packages
 danialfarid:ng-file-upload
 cfs:gridfs
 planettraining:material-design-icons
-angular:angular-material@=0.10.0
+planettraining:material-design-icons-font
+angular:angular-material

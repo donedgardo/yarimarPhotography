@@ -1,36 +1,83 @@
 <div>
   <div layout="column" layout-padding layout-margin class="home-whiteframe">
-    <div ng-show="$root.currentUser && $root.currentUser.admin">
-      <div layout="row" layout-sm="column" layout-margin>
+    <div ng-show="$root.currentUser">
 
+      <div layout="row" layout-sm="column" layout-margin>
         <!-- AutoComplete search client -->
         <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100"
           layout layout-align="center center">
-          <md-input-container>
-            <input ng-model="userSearchString" placeholder="Search
-            user...">
-            <div ng-repeat="user in self.users">
-              <span ng-show="user">{{user.profile.name}}</span>
-            </div>
-          </md-input-container>
+          <div layout='row'>
+            <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
+            <md-autocomplete md-selected-item="homeCtrl.selectedUser"
+              md-search-text="userSearchString"
+              md-menu-class="search_menu"
+              md-no-cache="true"
+              md-items="user in homeCtrl.userSearch()"
+              md-selected-item-change="homeCtrl.redirectToUser(user)"
+              md-item-text="user.profile.name"
+              md-search-text-change="homeCtrl.changeSubscription()"
+              md-min-lenght="0"
+              md-floating-label="Search user"
+              >
+              <md-item-template>
+                <span md-highlight-text="userSearchString">
+                  {{user.profile.name}}
+                </span>
+              </md-item-template>
+            </md-autocomplete>
+          </div>
         </md-whiteframe-z1>
         <!-- End AutoComplete search client -->
 
         <!--AutoComplete search album -->
         <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100"
           layout layout-align="center center">
-          Search Album
+          <div layout='row'>
+            <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
+            <md-autocomplete md-selected-item="homeCtrl.selectedAlbum"
+              md-search-text="albumSearchString"
+              md-menu-class="search_menu"
+              md-items="album in homeCtrl.albumSearch()"
+              md-no-cache="true"
+              md-selected-item-change="homeCtrl.redirectToAlbum(album)"
+              md-item-text="album.name"
+              md-search-text-change="homeCtrl.changeSubscription()"
+              md-min-lenght="0"
+              md-floating-label="Search Album"
+              >
+              <md-item-template>
+                <span md-highlight-text="albumSearchString">
+                  {{album.name}}
+                </span>
+              </md-item-template>
+            </md-autocomplete>
+          </div>
         </md-whiteframe-z1>
+        <!--End Album search -->
       </div>
+
       <div layout="row" layout-sm="column" layout-margin>
+        <!-- Create Client -->
         <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100" 
-                                       layout layout-align="center center">
-          Create Client
+          layout layout-align="center center">
+          <div layout='row'>
+            <md-button ng-href="/admin/create-client" class="md-fab" aria-label="Create Client">
+              <md-icon md-svg-icon="social:ic_person_add_24px"></md-icon>
+            </md-button>
+          </div>
         </md-whiteframe-z1>
+
+        <!-- Create Album -->
         <md-whiteframe-z1 class="md-whiteframe-z1" flex="50" flex-sm="100"
-                                       layout layout-align="center center">
-          Create Album
+          layout layout-align="center center">
+          <div layout="row">
+            <md-button class="md-fab" aria-label="Create Album"
+              ng-click="homeCtrl.openAlbumDialog($event)">
+              <md-icon md-svg-icon="action:ic_perm_media_24px"></md-icon>
+            </md-button>
+          </div>
         </md-whiteframe-z1>
+
       </div>
     </div>
   </div>

@@ -21,7 +21,7 @@
     <!-- User Interactive Menu -->
     <md-menu  md-offset="0 90">
       <md-button aria-label="Open User Interactive Menu"
-        ng-click="$mdOpenMenu($event)">
+        ng-click="$mdOpenMenu($event)" ng-hide="!$root.currentUser">
         <small>Welcome {{ currentUser.username }}</small>
       </md-button>
       <md-menu-content width='4'>
@@ -47,9 +47,9 @@
           Cose Side Nav
         </md-button>
         <div hide-md show-gt-md layout="column">
-          <md-button>Home</md-button>
-          <md-button>Clients</md-button>
-          <md-button>Albums</md-button>
+          <md-button ng-href="/admin">Home</md-button>
+          <md-button ng-href="/#">Clients</md-button>
+          <md-button ng-href="/#">Albums</md-button>
         </div>
       </md-content>
     </md-sidenav>

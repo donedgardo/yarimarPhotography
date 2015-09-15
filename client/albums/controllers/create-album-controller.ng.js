@@ -16,6 +16,7 @@ function CreateAlbumController($meteor, $location, $scope, $mdDialog){
   self.newAlbum.images = [];
   self.addImages = addImages;
   self.createAlbum = createAlbum;
+  console.log("users: ", self.users);
 
   function addImages(images){
     angular.forEach(images, function(image){
