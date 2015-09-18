@@ -16,3 +16,13 @@ angular.module('yarimarPhotography').config(function ($mdIconProvider) {
     .iconSet("image", "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-image.svg")
     .iconSet("maps", "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-maps.svg");
 });
+
+angular.module('yarimarPhotography').config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('light-blue',{
+      'default':'500',
+      'hue-1': '100',
+      'hue-2':'900'
+    })
+    .accentPalette('purple');
+});
