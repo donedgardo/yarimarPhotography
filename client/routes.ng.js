@@ -21,18 +21,6 @@
 
     $locationProvider.html5Mode(true);
 
-    var onlyAdmin = {"adminUser":  function($meteor){
-      return $meteor.requireValidUser(function(user) {
-        if (user.username === "donedgardo"){
-          console.log("resolve: ", true);
-          return true;
-        }
-        else{
-          console.log("resolve: ", false);
-          return "UNAUTHORIZED";
-        }
-      });
-    }};
     $stateProvider
   .state('home',{
     url:'/',
@@ -60,7 +48,7 @@
     controllerAs:"homeCtrl",
     resolve: {"adminUser":  function($meteor){
       return $meteor.requireValidUser(function(user) {
-        if (user.username === "donedgardo"){
+        if (user.username === "admin" || user.username === "donedgardo"){
           console.log("resolve: ", true);
           return true;
         }
@@ -79,7 +67,7 @@
     controllerAs:"createClientCtrl",
     resolve:  {"adminUser":  function($meteor){
       return $meteor.requireValidUser(function(user) {
-        if (user.username === "donedgardo"){
+        if (user.username === "admin" || user.username === "donedgardo"){
           console.log("resolve: ", true);
           return true;
         }
@@ -98,7 +86,7 @@
     controllerAs:"clientDetCtrl",
     resolve:  {"adminUser":  function($meteor){
       return $meteor.requireValidUser(function(user) {
-        if (user.username === "donedgardo"){
+        if (user.username === "admin" || user.username === "donedgardo"){
           console.log("resolve: ", true);
           return true;
         }
@@ -117,7 +105,7 @@
     controllerAs:'ca',
     resolve:{"adminUser":  function($meteor){
       return $meteor.requireValidUser(function(user) {
-        if (user.username === "donedgardo"){
+        if (user.username === "admin" || user.username === "donedgardo"){
           console.log("resolve: ", true);
           return true;
         }
@@ -136,7 +124,7 @@
     controllerAs:'ea',
     resolve: {"adminUser":  function($meteor){
       return $meteor.requireValidUser(function(user) {
-        if (user.username === "donedgardo"){
+        if (user.username === "admin" || user.username === "donedgardo"){
           console.log("resolve: ", true);
           return true;
         }
